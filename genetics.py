@@ -1,4 +1,4 @@
-iimport math
+import math
 import random
 
 class Creature:
