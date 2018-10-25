@@ -108,5 +108,13 @@ def print_circel():
         print_circel.append(line)
     return print_circel
 
+FILENAME = "genetic.csv"
+
+circel = print_circel()
+
+with open(FILENAME, "w", newline="") as file:
+    writer = csv.writer(circel)
+    writer.writerows(circel)
+
+print(circel)
 print(time.process_time())
-print(print_circel())
