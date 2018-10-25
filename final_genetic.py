@@ -66,9 +66,13 @@ def next_generation(generation, offspring_size,T):
     next_generation = select(offsprings, survival_size,T)
     return next_generation
 
+#T-матрица положения 4х4
+#num_of_select-число "выживших потомков" образующихся после каждого нового отбора 
+#max_num_generations-число генераций
+#num_of_offsprings-число "потомков у каждого вектора
 def evolution(number_q,T,num_of_select,max_num_generations=2000):
     generation=random_X(number_q, num_of_select)
-    num_of_offsprings = 100
+    num_of_offsprings = 25
     generation_index = 1
     while True:
         generation = next_generation(generation, num_of_offsprings,T)
