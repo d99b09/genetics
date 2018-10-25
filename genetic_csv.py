@@ -107,3 +107,6 @@ def print_circel():
         line=find_q(x,y)
         print_circel.append(line)
     return print_circel
+
+print(time.process_time())
+print(print_circel())
