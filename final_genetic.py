@@ -106,8 +106,7 @@ def is_approximate(par, generation, T):
     else:
         return False
 
-def evolution(par, T, num_of_select=20, num_of_offsprings = 40, max_num_generations=100):
-
+def evolution(par, T, num_of_select=100, num_of_offsprings = 20, max_num_generations=1000):
     generation = random_X(par, num_of_select)
     generation_index = 1
     while True:
@@ -117,7 +116,8 @@ def evolution(par, T, num_of_select=20, num_of_offsprings = 40, max_num_generati
             break
         elif is_approximate(par, generation, T):
             break
-    result = score_funct(par, generation[0], T)
+    q=generation[0]
+    result = score_funct(par, q, T)
     return q, result, generation_index
 
 par=[4,[0, 3, 2, 1], [0,0,0,0],[0,0,0,0],[0, -math.pi , -math.pi, 0], [math.pi/2, math.pi, math.pi, 0]]
