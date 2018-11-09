@@ -117,11 +117,16 @@ def evolution(par, T, num_of_select=100, num_of_offsprings = 20, max_num_generat
         elif is_approximate(par, generation, T):
             break
     q=generation[0]
-    result = score_funct(par, q, T)
+    result = score_funct(par, q, T)    
     return q, result, generation_index
+
 #par - это список параметров манипулятора 
 #par[0] - количество систем отсчёта 
-
+#par[1] - растояния между осями z по оси x
+#par[2] - угол поворота осей z по оси x
+#par[3] - растояния между осями x по оси z
+#par[4] - минимальные значения углов
+#par[5] - максимальные значения углов
 
 par=[6,
      [0, 0, 5, 5, 0, 0],
@@ -129,9 +134,12 @@ par=[6,
      [0, 0, 5, 5, 0, 0],
      [0, 0, 0, 0, 0, 0],
      [2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi]]
+
+#координаты x, y, z (в будущем матрица положения)
 T=[7, 4, 7]
 
 
 
 print(evolution(par, T))
 print(time.process_time())
+#время работы 12.859375
