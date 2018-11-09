@@ -3,7 +3,7 @@ import time
 import random
 import math
 
-
+time.process_time()
 
 def random_q(par):
 
@@ -23,8 +23,6 @@ def random_X(par, num_of_select):
     return out_vector
 
 def find_xyz(par, q):
-    
-    time.process_time()
 
     number_q = par[0]
     a = par[1]
@@ -69,13 +67,12 @@ def mutate(member, par):
         input_vector=list(T[i])
         max_index=len(input_vector)
         mutated_index = random.choice(range(0, max_index))
-        mutation_scalar=2*random.random()*input_vector[mutated_index]
-        while True:
-            if ((mutation_scalar < min_q[mutated_index]) and (mutation_scalar > max_q[mutated_index])):
+        for j in range(10):
+            mutation_scalar = 2 * random.random() * input_vector[mutated_index]
+            if ((mutation_scalar > min_q[mutated_index])and(mutation_scalar < max_q[mutated_index])):
                 break
-            else:
-                mutation_scalar = 2 * random.random() * input_vector[mutated_index]
-
+            if j == 9:
+                random.uniform(min_q[mutated_index], max_q[mutated_index])
         output_vector = input_vector[:]
         output_vector[mutated_index] = mutation_scalar
         mutated.append(output_vector)
@@ -104,13 +101,12 @@ def next_generation(par, generation, offspring_size, T):
     return next_generation
 
 def is_approximate(par, generation, T):
-
     if (score_funct(par, generation[0], T))<0.01:
         return True
     else:
         return False
 
-def evolution(par, T, num_of_select=20, num_of_offsprings = 40, max_num_generations=1000):
+def evolution(par, T, num_of_select=20, num_of_offsprings = 40, max_num_generations=100):
 
     generation = random_X(par, num_of_select)
     generation_index = 1
@@ -121,12 +117,11 @@ def evolution(par, T, num_of_select=20, num_of_offsprings = 40, max_num_generati
             break
         elif is_approximate(par, generation, T):
             break
-    q = generation[0]
-    result = score_funct(q, T, par)
-    return q, result
+    result = score_funct(par, generation[0], T)
+    return q, result, generation_index
 
-par=[3,[3,2,1],[0,0,0],[0,0,0],[0, -math.pi , math.pi], [math.pi/2,math.pi,math.pi]]
-T=[4.8,2.8,0]
+par=[4,[0, 3, 2, 1], [0,0,0,0],[0,0,0,0],[0, -math.pi , -math.pi, 0], [math.pi/2, math.pi, math.pi, 0]]
+T=[4.8, 2.8, 0]
 
 
 
