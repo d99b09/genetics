@@ -119,9 +119,17 @@ def evolution(par, T, num_of_select=100, num_of_offsprings = 20, max_num_generat
     q=generation[0]
     result = score_funct(par, q, T)
     return q, result, generation_index
+#par - это список параметров манипулятора 
+#par[0] - количество систем отсчёта 
 
-par=[4,[0, 3, 2, 1], [0,0,0,0],[0,0,0,0],[0, -math.pi , -math.pi, 0], [math.pi/2, math.pi, math.pi, 0]]
-T=[4.8, 2.8, 0]
+
+par=[6,
+     [0, 0, 5, 5, 0, 0],
+     [0, -math.pi/2, 0, -math.pi/2, math.pi/2, -math.pi/2],
+     [0, 0, 5, 5, 0, 0],
+     [0, 0, 0, 0, 0, 0],
+     [2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi, 2*math.pi]]
+T=[7, 4, 7]
 
 
 
