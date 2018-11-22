@@ -112,9 +112,9 @@ def evolution(par, T, num_of_select=100, num_of_offsprings = 20, max_num_generat
             break
         elif is_approximate(par, generation, T):
             break
-    q=generation[0]
-    result = score_funct(par, q, T)
-    return generation, result, generation_index
+    #q=generation[0]
+    #result = score_funct(par, q, T)
+    return generation#, result, generation_index
 
 def next_evolution(par, T, generation, num_of_offsprings = 20, max_num_generations=2000):
     generation_index = 0
@@ -125,6 +125,4 @@ def next_evolution(par, T, generation, num_of_offsprings = 20, max_num_generatio
             break
         elif is_approximate(par, generation, T):
             break
-    q = generation[0]
-    result = score_funct(par, q, T)
-    return generation, result, generation_index
+    return generation
